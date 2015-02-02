@@ -1,12 +1,11 @@
 package com.nature.aefront.resources;
 
-import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.nature.aefront.services.CheapMessageService;
+import com.nature.aefront.models.ShunterView;
 
 /**
  * Root resource (exposed at "myresource" path)
@@ -14,18 +13,12 @@ import com.nature.aefront.services.CheapMessageService;
 @Path("home")
 public class HomeResource {
 
-    @Inject
-    private CheapMessageService cheapMessageService;
-
     /**
-     * Method handling HTTP GET requests. The returned object will be sent
-     * to the client as "text/plain" media type.
-     *
-     * @return String that will be returned as a text/plain response.
+     * @return Render shunter view.
      */
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getIt() {
-        return "No place like home!";
+    @Produces(MediaType.TEXT_HTML)
+    public ShunterView getIt() {
+        return new ShunterView();
     }
 }
